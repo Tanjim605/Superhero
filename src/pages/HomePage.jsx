@@ -4,13 +4,14 @@ import { fetchSuperheroesByApi } from "../apis/api"; // Our API function
 import ErrorMessage from "../components/ErrorMessage";
 import Loading from "../components/Loading";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl";
+import HeroCard from "../components/HeroCard";
 
 const HomePage = () => {
   const [superheroes, setSuperheroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(5);
+  const [perPage, setPerPage] = useState(15);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
@@ -79,16 +80,9 @@ const HomePage = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
         {superheroes.map((hero) => (
-          <Link to={`/details/${hero.id}`} key={hero.id}>
-            <div className="border rounded p-4 shadow-md bg-white">
-              <h2 className="text-xl font-semibold">{hero.name}</h2>
-              <p className="text-gray-600">
-                Publisher: {hero.biography.publisher}
-              </p>
-            </div>
-          </Link>
+          <HeroCard key={hero.id} hero={hero} />
         ))}
       </div>
 
