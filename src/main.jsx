@@ -2,8 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import SuperheroDetails from "./pages/SuperheroDetails";
 import HomePage from "./pages/HomePage";
+import SuperheroDetails from "./pages/SuperheroDetails";
 
 const router = createBrowserRouter([
   {

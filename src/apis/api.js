@@ -1,15 +1,15 @@
 export const fetchSuperheroDetails = async (id) => {
     const response = await fetch(`https://superhero-api.innovixmatrixsystem.com/api/collections/superheros/records/${id}`);
-    if (!response.ok) throw new Error('Fetch failed');
+    if (!response.ok) {
+        throw new Error('Fetch failed');
+    }
     return response.json();
 };
 
 export const fetchSuperheroesByApi = async (url) => {
     const response = await fetch(url);
-      
-      if (!response.ok) {
+    if (!response.ok) {
         throw new Error("Failed to fetch data");
-      }
-
-      return response.json();
+    }
+    return response.json();
 };

@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSuperheroDetails } from "../apis/api"; // Our API function
+import ErrorMessage from "../components/ErrorMessage";
+import Loading from "../components/Loading";
+import Header from "../components/Header";
 
 function SuperheroDetails() {
   let { heroId } = useParams(); // Get the hero ID from the URL parameters
@@ -23,15 +26,11 @@ function SuperheroDetails() {
   }, [heroId]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    ); // Add spinner here
+    return <Loading />; // Add spinner here
   }
 
   if (!hero) {
-    return <div className="text-center text-red-500">Hero not found!</div>;
+    <ErrorMessage>Hero not found!</ErrorMessage>;
   }
 
   return (

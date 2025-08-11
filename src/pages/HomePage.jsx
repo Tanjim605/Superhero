@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchSuperheroesByApi } from "../apis/api"; // Our API function
+import ErrorMessage from "../components/ErrorMessage";
+import Loading from "../components/Loading";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl";
 
 const HomePage = () => {
@@ -51,19 +53,16 @@ const HomePage = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
-  if (loading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        Loading...
-      </div>
-    );
-  if (error)
-    return <div className="text-center mt-8 text-red-500">Error: {error}</div>;
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    <ErrorMessage> Error: {error}</ErrorMessage>;
+  }
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Superhero Database</h1>
-
       <div className="flex flex-col md:flex-row justify-between mb-4 space-y-4 md:space-y-0">
         <input
           type="text"
@@ -82,16 +81,14 @@ const HomePage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {superheroes.map((hero) => (
-          <div key={hero.id} className="border rounded p-4 shadow-md bg-white">
-            <h2 className="text-xl font-semibold">{hero.name}</h2>
-            <p className="text-gray-600">Publisher: {hero.publisher}</p>
-            <Link
-              to={`/details/${hero.id}`}
-              className="text-blue-500 hover:underline mt-2 block"
-            >
-              View Details
-            </Link>
-          </div>
+          <Link to={`/details/${hero.id}`} key={hero.id}>
+            <div className="border rounded p-4 shadow-md bg-white">
+              <h2 className="text-xl font-semibold">{hero.name}</h2>
+              <p className="text-gray-600">
+                Publisher: {hero.biography.publisher}
+              </p>
+            </div>
+          </Link>
         ))}
       </div>
 
