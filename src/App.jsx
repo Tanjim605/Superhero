@@ -1,22 +1,16 @@
+import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeContext } from "./context";
 import "./index.css";
+
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import SuperheroDetails from "./pages/SuperheroDetails";
-
-import { useState } from "react";
-import { ThemeContext } from "./context";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
-    // children: [
-    //   {
-    //     path: "/details/:heroId",
-    //     element: <SuperheroDetails />,
-    //   },
-    // ],
     errorElement: <ErrorPage />,
   },
   {
@@ -27,7 +21,7 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true); // Default to dark mode
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>

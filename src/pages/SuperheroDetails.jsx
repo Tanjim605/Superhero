@@ -48,11 +48,12 @@ function SuperheroDetails() {
   return (
     <div className="container mx-auto p-4">
       <Header />
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-8">
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-8 dark:bg-slate-900 rounded-lg shadow-lg">
         {/* Main card container */}
-        <div className="bg-white rounded-lg shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row font-inter">
-          {/* Left Section: Image and Name */}
-          <div className="lg:w-1/2 bg-gray-200 p-6 flex flex-col items-center justify-start relative">
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row font-inter">
+
+          {/* Left Section: Image, Name and Appearance */}
+          <div className="lg:w-1/2 bg-gray-200 dark:bg-slate-900 text-gray-900 dark:text-amber-50 p-6 flex flex-col items-center justify-start relative">
             {/* Main Hero Image */}
             <HeroImage imageData={hero.image} altText={hero.name} />
             {/* Name and Full Name */}
@@ -62,7 +63,7 @@ function SuperheroDetails() {
           </div>
 
           {/* Right Section: Details */}
-          <div className="lg:w-1/2 p-6 bg-white text-gray-800">
+          <div className="lg:w-1/2 p-6 bg-white text-gray-800 dark:bg-slate-800 dark:text-gray-300">
             {/* Comic and Alignment Badges */}
             <ComicAndAlignment biography={hero.biography} />
 
@@ -72,9 +73,18 @@ function SuperheroDetails() {
                 onClick={() =>
                   setChartType(chartType === "bar" ? "radar" : "bar")
                 }
-                className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
               >
-                {chartType === "bar" ? <Hexagon /> : <ChartBar />}
+                {chartType === "bar" ? (
+                  <div className="flex items-center gap-2">
+                    <Hexagon />
+                    <ChartBar className="bg-blue-400 rounded hover:bg-blue-500 h-8 w-8 p-1 transition-colors" /> 
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Hexagon className="bg-blue-400 rounded hover:bg-blue-500 h-8 w-8 p-1 transition-colors" />
+                    <ChartBar />
+                  </div>
+                )}
               </button>
             </div>
             {/* Power Stats Section based on chart type */}

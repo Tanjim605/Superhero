@@ -6,6 +6,8 @@ export default function PowerStatsRadarChart({ powerStats }) {
   const labels = Object.entries(powerStats).map(([key, value]) => key);
   const values = Object.entries(powerStats).map(([key, value]) => value);
 
+  
+
   const data = {
     labels: labels,
     datasets: [
@@ -44,11 +46,11 @@ export default function PowerStatsRadarChart({ powerStats }) {
 
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4 border-b pb-2 text-gray-900">
+      <h2 className="text-2xl font-bold mb-4 border-b pb-2 text-gray-900 dark:text-amber-100">
         POWER STATS
       </h2>
       <div className="space-y-3 mb-6">
-        <div className="flex justify-center items-center text-sm h-48 w-full">
+        <div className="flex justify-center items-center  text-sm w-full">
           {/* Display each power stat with a label and Radar */}
           <Radar data={data} options={options} />
         </div>

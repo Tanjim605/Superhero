@@ -2,10 +2,10 @@ export default function Connections({ connections }) {
   
   return (
     <>
-      <h2 className="text-2xl font-bold mb-4 border-b pb-2 text-gray-900">
+      <h2 className="text-2xl font-bold mb-4 border-b pb-2 text-gray-900 dark:text-amber-100">
         CONNECTIONS
       </h2>
-      <div className="space-y-2 text-sm text-gray-700 mb-6">
+      <div className="space-y-2 text-sm mb-6">
         <p>
           <strong>Group Affiliation:</strong>{" "}
           {connections["group-affiliation"]}
