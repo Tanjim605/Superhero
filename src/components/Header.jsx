@@ -14,16 +14,14 @@ export default function Header() {
   // Clicking the button toggles the dark mode state
 
   return (
-    <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-900 dark:text-slate-300">
+    <div className="flex items-center max-w-full justify-between p-4 bg-white dark:bg-slate-900 dark:text-slate-300">
       <Link to={`/`}>
         {" "}
         <h1 className="text-3xl font-bold mb-4 flex gap-2 items-center">
-          <img
-            src="../../public/assets/super_favicon.png"
-            alt=""
-            className="w-12"
-          />{" "}
-          SuperHero <span className="text-red-400"> Database</span>
+          <img src="../../assets/super_favicon.png" alt="" className="w-12" />{" "}
+          <div>
+            SuperHero <span className="text-red-400"> Database</span>
+          </div>
         </h1>{" "}
       </Link>
 
