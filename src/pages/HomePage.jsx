@@ -5,6 +5,7 @@ import ErrorMessage from "../components/ErrorMessage";
 import Header from "../components/Header";
 import HeroCard from "../components/HeroCard";
 import Loading from "../components/Loading";
+import Pagination from "../components/Pagination";
 import { ThemeContext } from "../context"; // Importing the ThemeContext
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl"; // Utility function to prepare the fetching URL
 
@@ -112,25 +113,12 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="flex justify-center items-center mt-4 space-x-2 dark:text-slate-300">
-            <button
-              onClick={() => setPage((page) => Math.max(1, page - 1))}
-              disabled={page === 1}
-              className="bg-gray-200 dark:bg-gray-800 p-2 rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span>
-              Page {page} of {totalPages}
-            </span>
-            <button
-              onClick={() => setPage((page) => Math.min(totalPages, page + 1))}
-              disabled={page === totalPages}
-              className="bg-gray-200 dark:bg-gray-800 p-2 rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
+          
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
         </>
       )}
     </div>
