@@ -1,7 +1,8 @@
 import { ChartBar, Hexagon } from "lucide-react"; // Importing the ChartBar icon
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchSuperheroDetails } from "../apis/api"; // Our API function
+import HeroDetailsLoader from "../components/DetailPageLoader";
 import ErrorMessage from "../components/ErrorMessage";
 import Header from "../components/Header";
 import Appearance from "../components/heroDetails/Appearance";
@@ -14,7 +15,6 @@ import Name from "../components/heroDetails/Name";
 import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart";
 import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart";
 import Work from "../components/heroDetails/Work";
-import Loading from "../components/Loading";
 
 function SuperheroDetails() {
   let { heroId } = useParams(); // Get the hero ID from the URL parameters
@@ -37,8 +37,15 @@ function SuperheroDetails() {
     loadDetails();
   }, [heroId]);
 
+  // Scroll to top when the component mounts
+  // This ensures that when navigating to the details page, the view starts at the top
+  // without this the page loads at the bottom if the user was scrolled down on the homepage
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (loading) {
-    return <Loading />; // Add spinner here
+    return <HeroDetailsLoader />; // Add spinner here
   }
 
   if (!hero) {
@@ -46,12 +53,20 @@ function SuperheroDetails() {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="relative container mx-auto p-4">
       <Header />
+
+      {/* Back Button */}
+      <Link to="/" className=" ">
+        <div className="absolute left-10 top-32 h-12 w-22 hover:scale-110 transition-all  bg-blue-950 dark:bg-orange-600 rounded-xl shadow-lg mb-4 flex items-center justify-center text-white font-semibold">
+          &larr; Back
+        </div>
+      </Link>
       <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-6 md:p-8 dark:bg-slate-900 rounded-lg shadow-lg">
         {/* Main card container */}
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row font-inter">
 
+        {/* Hero Details Card */}
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row font-inter">
           {/* Left Section: Image, Name and Appearance */}
           <div className="lg:w-1/2 bg-gray-200 dark:bg-slate-900 text-gray-900 dark:text-amber-50 p-6 flex flex-col items-center justify-start relative">
             {/* Main Hero Image */}
@@ -77,7 +92,7 @@ function SuperheroDetails() {
                 {chartType === "bar" ? (
                   <div className="flex items-center gap-2">
                     <Hexagon />
-                    <ChartBar className="bg-blue-400 rounded hover:bg-blue-500 h-8 w-8 p-1 transition-colors" /> 
+                    <ChartBar className="bg-blue-400 rounded hover:bg-blue-500 h-8 w-8 p-1 transition-colors" />
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">

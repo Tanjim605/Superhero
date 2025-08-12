@@ -12,7 +12,6 @@ const HomePage = () => {
   const [superheroes, setSuperheroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
