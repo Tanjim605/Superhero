@@ -1,0 +1,14 @@
+{
+  /* Name and Full Name from biography*/
+}
+
+export default function Name({ name, fullName }) {
+  return (
+    <div className="w-full text-center mb-6">
+      <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
+        {name}
+      </h1>
+      <p className="text-lg text-gray-600 mt-1">{fullName}</p>
+    </div>
+  );
+}
