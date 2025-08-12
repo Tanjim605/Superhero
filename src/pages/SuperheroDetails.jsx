@@ -16,7 +16,7 @@ import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart";
 import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart";
 import Work from "../components/heroDetails/Work";
 
-function SuperheroDetails() {
+export default function SuperheroDetails() {
   let { heroId } = useParams(); // Get the hero ID from the URL parameters
 
   const [hero, setHero] = useState(null);
@@ -44,10 +44,12 @@ function SuperheroDetails() {
     window.scrollTo(0, 0);
   }, []);
 
+  // display the loader while the hero details are being fetched
   if (loading) {
     return <HeroDetailsLoader />; // Add spinner here
   }
 
+  // If hero is not found, display an error message
   if (!hero) {
     <ErrorMessage>Hero not found!</ErrorMessage>;
   }
@@ -126,5 +128,3 @@ function SuperheroDetails() {
     </div>
   );
 }
-
-export default SuperheroDetails;

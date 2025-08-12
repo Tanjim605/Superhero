@@ -1,3 +1,4 @@
+// importing libraries for the radar chart from Chart.js and React-Chart.js-2
 import { Chart, registerables } from "chart.js";
 import { Radar } from "react-chartjs-2";
 Chart.register(...registerables);

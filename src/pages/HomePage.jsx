@@ -6,15 +6,17 @@ import Header from "../components/Header";
 import HeroCard from "../components/HeroCard";
 import Loading from "../components/Loading";
 import { ThemeContext } from "../context"; // Importing the ThemeContext
-import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl";
+import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl"; // Utility function to prepare the fetching URL
 
-const HomePage = () => {
+export default function HomePage() {
+  // State variables to manage superheroes data, loading state, error state, and pagination
   const [superheroes, setSuperheroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Using ThemeContext to access the theme, pagination, and sorting states
   const { perPage, setPerPage, sortOrder, setSortOrder, page, setPage } =
     useContext(ThemeContext);
 
@@ -52,10 +54,12 @@ const HomePage = () => {
     setPage(1); // Reset to first page on new search
   };
 
+  // Function to handle sorting order change between ascending and descending by name
   const handleSortChange = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
+  // If there's an error, display the error message
   if (error) {
     <ErrorMessage> Error: {error}</ErrorMessage>;
   }
@@ -131,6 +135,4 @@ const HomePage = () => {
       )}
     </div>
   );
-};
-
-export default HomePage;
+}

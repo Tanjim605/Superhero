@@ -21,8 +21,12 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
+  // Those states are used to manage the theme, pagination, and sorting
+  // they are in the root so that they doesn't get reset on navigation
+
+
   const [darkMode, setDarkMode] = useState(true); // Default to dark mode
-  const [perPage, setPerPage] = useState(5);
+  const [perPage, setPerPage] = useState(5);  // Number of items per page
   const [page, setPage] = useState(1); // Current page number
   const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
 
