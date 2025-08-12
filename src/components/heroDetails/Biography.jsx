@@ -7,7 +7,8 @@ export default function Biography({ biography }) {
       </h2>
       <div className="space-y-2 text-sm text-gray-700 mb-6">
         <p>
-          <strong>Full Name:</strong> {biography["full-name"]}
+          <strong>Full Name:</strong>{" "}
+          {biography["full-name"] ? biography["full-name"] : "Unknown"}
         </p>
         <p>
           <strong>Alter Egos:</strong> {biography["alter-egos"]}
@@ -16,12 +17,10 @@ export default function Biography({ biography }) {
           <strong>Aliases:</strong> {biography.aliases.join(", ")}
         </p>
         <p>
-          <strong>Place of Birth:</strong>{" "}
-          {biography["place-of-birth"]}
+          <strong>Place of Birth:</strong> {biography["place-of-birth"]}
         </p>
         <p>
-          <strong>First Appearance:</strong>{" "}
-          {biography["first-appearance"]}
+          <strong>First Appearance:</strong> {biography["first-appearance"]}
         </p>
         <p>
           <strong>Publisher:</strong> {biography.publisher}

@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 button{
   cursor: pointer;
+}
+
+@view-transition{
+  navigation: auto;
 }
