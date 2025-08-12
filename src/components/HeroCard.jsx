@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function HeroCard({ hero }) {
   return (
     <Link to={`/details/${hero.id}`}>
-      <div className="relative w-full flex bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-amber-400 hover:shadow-md transition-all duration-300 hover:scale-105">
+      <div className="relative w-full flex bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-lime-300 hover:shadow-md transition-all duration-300 hover:scale-105">
         {/* Card Background and Image */}
         <div className="relative w-full h-80 sm:h-96 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
           <img

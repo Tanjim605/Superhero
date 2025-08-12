@@ -17,7 +17,14 @@ export default function Header() {
     <div className="flex items-center justify-between p-4 bg-white dark:bg-slate-900 dark:text-slate-300">
       <Link to={`/`}>
         {" "}
-        <h1 className="text-3xl font-bold mb-4">Superhero Database</h1>{" "}
+        <h1 className="text-3xl font-bold mb-4 flex gap-2 items-center">
+          <img
+            src="../../public/assets/super_favicon.png"
+            alt=""
+            className="w-12"
+          />{" "}
+          SuperHero <span className="text-red-400"> Database</span>
+        </h1>{" "}
       </Link>
 
       {/* dark mode toggle button */}

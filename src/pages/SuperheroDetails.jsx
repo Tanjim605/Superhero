@@ -58,7 +58,7 @@ function SuperheroDetails() {
 
       {/* Back Button */}
       <Link to="/" className=" ">
-        <div className="h-12 w-22 ml-4 lg:ml-10 hover:scale-110 transition-all bg-blue-950 dark:bg-orange-600 rounded-xl shadow-lg mb-4 flex items-center justify-center text-white font-semibold">
+        <div className="h-12 w-22 ml-4 lg:ml-10 hover:scale-110 transition-all bg-blue-950 rounded-xl shadow-lg mb-4 flex items-center justify-center text-white font-semibold">
           &larr; Back
         </div>
       </Link>
