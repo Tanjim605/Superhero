@@ -60,7 +60,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className="text-lime-100 px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="text-gray-900 dark:text-lime-100 px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Previous
       </button>
@@ -73,7 +73,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
           className={`px-3 py-1 rounded-full ${
             page === currentPage
               ? "bg-lime-600 text-white"
-              : "bg-gray-200 text-lime-100 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
+              : "bg-gray-200 text-gray-900  dark:text-lime-100 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
           } ${
             page === "..."
               ? "cursor-not-allowed bg-transparent dark:bg-transparent dark:hover:bg-transparent"
@@ -89,7 +89,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="text-lime-100 px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="text-gray-900 dark:text-lime-100 px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
       </button>
