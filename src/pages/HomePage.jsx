@@ -1,21 +1,23 @@
 import { ArrowDownAZ, ArrowDownZA } from "lucide-react"; // Importing the ArrowDownAZ icon
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchSuperheroesByApi } from "../apis/api"; // Our API function
 import ErrorMessage from "../components/ErrorMessage";
 import Header from "../components/Header";
 import HeroCard from "../components/HeroCard";
 import Loading from "../components/Loading";
+import { ThemeContext } from "../context"; // Importing the ThemeContext
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl";
 
 const HomePage = () => {
   const [superheroes, setSuperheroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(15);
+
   const [totalPages, setTotalPages] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
+
+  const { perPage, setPerPage, sortOrder, setSortOrder, page, setPage } =
+    useContext(ThemeContext);
 
   useEffect(() => {
     const fetchSuperheroes = async () => {
@@ -70,13 +72,29 @@ const HomePage = () => {
           onChange={handleSearchChange}
           className="p-2 border rounded shadow-sm w-full md:w-1/3 dark:bg-slate-800 dark:text-slate-300"
         />
-        <button
-          onClick={handleSortChange}
-          className="flex bg-slate-500 text-white p-2 rounded shadow-sm border-2 dark:border-slate-100 dark:bg-slate-800 dark:text-slate-300 transition-colors"
-        >
-          Sort by
-          {sortOrder === "asc" ? <ArrowDownAZ /> : <ArrowDownZA />}
-        </button>
+        <div className="flex items-center space-x-2">
+          {/* Per Page Selection */}
+          <label className="text-sm">Show:</label>
+          <select
+            value={perPage}
+            onChange={(e) => setPerPage(e.target.value)}
+            className="p-2 w-24 border rounded shadow-sm dark:bg-slate-800 dark:text-slate-300"
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+          </select>
+
+          {/* Sort Button */}
+          <button
+            onClick={handleSortChange}
+            className="flex bg-slate-500 text-white p-2 rounded shadow-sm border-1 dark:border-slate-100 dark:bg-slate-800 dark:text-slate-300 transition-colors"
+          >
+            Sort by
+            {sortOrder === "asc" ? <ArrowDownAZ /> : <ArrowDownZA />}
+          </button>
+        </div>
       </div>
 
       {/* Displaying loading state while data is fetching from api */}

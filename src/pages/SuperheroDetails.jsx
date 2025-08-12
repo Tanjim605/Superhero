@@ -21,7 +21,7 @@ function SuperheroDetails() {
 
   const [hero, setHero] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [chartType, setChartType] = useState("bar"); // State to toggle between bar and radar chart
+  const [chartType, setChartType] = useState("radar"); // State to toggle between bar and radar chart
 
   useEffect(() => {
     const loadDetails = async () => {

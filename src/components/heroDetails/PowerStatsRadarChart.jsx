@@ -1,8 +1,14 @@
 import { Chart, registerables } from "chart.js";
 import { Radar } from "react-chartjs-2";
 Chart.register(...registerables);
+import { useContext } from "react";
+import { ThemeContext } from "../../context";
 
 export default function PowerStatsRadarChart({ powerStats }) {
+  // get dark mode from react context api
+  const { darkMode } = useContext(ThemeContext);
+  
+
   const labels = Object.entries(powerStats).map(([key, value]) => key);
   const values = Object.entries(powerStats).map(([key, value]) => value);
 
@@ -28,16 +34,25 @@ export default function PowerStatsRadarChart({ powerStats }) {
     plugins: {
       legend: {
         display: false,
-      },
+      }
     },
     scales: {
       r: {
         angleLines: {
           display: true,
+          color: darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)",
+        },
+        grid: {
+          color: darkMode ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.2)",
+        },
+        pointLabels: {
+          color: darkMode ? "#fff" : "#000",
+          font: { size: 14 },
         },
         suggestedMin: 0,
         suggestedMax: 100,
         ticks: {
+          display: false,
           stepSize: 20,
         },
       },

@@ -22,9 +22,23 @@ const router = createBrowserRouter([
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true); // Default to dark mode
+  const [perPage, setPerPage] = useState(5);
+  const [page, setPage] = useState(1); // Current page number
+  const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
 
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+    <ThemeContext.Provider
+      value={{
+        darkMode,
+        setDarkMode,
+        perPage,
+        setPerPage,
+        sortOrder,
+        setSortOrder,
+        page,
+        setPage,
+      }}
+    >
       <div
         className={`${
           darkMode ? "dark" : ""
