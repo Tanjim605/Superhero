@@ -6,7 +6,7 @@ export default function Loading() {
       {/* <div className="flex justify-center items-center h-screen">
         Loading...
       </div> */}
-      <div className=" flex gap-5 justify-center rounded p-4 bg-white dark:bg-slate-800">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
         <HomeLoadingCard />
         <HomeLoadingCard />
         <HomeLoadingCard />
