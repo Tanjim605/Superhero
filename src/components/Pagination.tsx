@@ -1,7 +1,13 @@
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
+type PaginationProps = {
+  currentPage: number
+  totalPages: number
+  onPageChange: React.Dispatch<React.SetStateAction<number>>  //got this by hovering over setPage state on context
+}
+
+export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
   const getPageNumbers = () => {
-    const pages = [];
-    const delta = 1; // Show 1 page on each side of current page
+    const pages:(number|"...")[] = [];  // pages array te number thakbe maximum time. kintu majhe majhe "..." ei string ta thakte pare
+    const delta:number = 1; // Show 1 page on each side of current page
 
     // Always add first page
     pages.push(1);
@@ -31,7 +37,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     return pages;
   };
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number | "...") => {
     if (
       page !== "..." &&
       page >= 1 &&
