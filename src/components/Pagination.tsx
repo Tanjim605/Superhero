@@ -1,13 +1,18 @@
 type PaginationProps = {
-  currentPage: number
-  totalPages: number
-  onPageChange: React.Dispatch<React.SetStateAction<number>>  //got this by hovering over setPage state on context
-}
+  currentPage: number;
+  totalPages: number;
+  onPageChange: React.Dispatch<React.SetStateAction<number>>; //got this by hovering over setPage state on context
+};
+import type { JSX } from "react";
 
-export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
-  const getPageNumbers = () => {
-    const pages:(number|"...")[] = [];  // pages array te number thakbe maximum time. kintu majhe majhe "..." ei string ta thakte pare
-    const delta:number = 1; // Show 1 page on each side of current page
+export default function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps): JSX.Element {
+  const getPageNumbers = (): (number | "...")[] => {
+    const pages: (number | "...")[] = []; // pages array te number thakbe maximum time. kintu majhe majhe "..." ei string ta thakte pare
+    const delta: number = 1; // Show 1 page on each side of current page
 
     // Always add first page
     pages.push(1);
@@ -18,8 +23,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     }
 
     // Add pages around current page
-    const start = Math.max(2, currentPage - delta);
-    const end = Math.min(totalPages - 1, currentPage + delta);
+    const start: number = Math.max(2, currentPage - delta);
+    const end: number = Math.min(totalPages - 1, currentPage + delta);
     for (let i = start; i <= end; i++) {
       pages.push(i);
     }
@@ -37,7 +42,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     return pages;
   };
 
-  const handlePageChange = (page: number | "...") => {
+  const handlePageChange = (page: number | "..."): void => {
     if (
       page !== "..." &&
       page >= 1 &&
@@ -48,13 +53,13 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     }
   };
 
-  const handlePrevious = () => {
+  const handlePrevious = (): void => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);
     }
   };
 
-  const handleNext = () => {
+  const handleNext = (): void => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
     }

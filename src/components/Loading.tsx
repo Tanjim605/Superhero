@@ -1,4 +1,4 @@
-import HomeLoadingCard from "./HomeLoadingCard";
+import HomeLoadingCard from "./HomeLoadingCard.js";
 
 export default function Loading() {
   return (

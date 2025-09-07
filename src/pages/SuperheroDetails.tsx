@@ -1,20 +1,20 @@
 import { ChartBar, Hexagon } from "lucide-react"; // Importing the ChartBar icon
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchSuperheroDetails } from "../apis/api"; // Our API function
-import HeroDetailsLoader from "../components/DetailPageLoader";
-import ErrorMessage from "../components/ErrorMessage";
-import Header from "../components/Header";
-import Appearance from "../components/heroDetails/Appearance";
-import Biography from "../components/heroDetails/Biography";
-import ComicAndAlignment from "../components/heroDetails/ComicAndAlignment";
-import Connections from "../components/heroDetails/Connections";
-import CreatedAndUpdated from "../components/heroDetails/CreatedAndUpdated";
-import HeroImage from "../components/heroDetails/HeroImage";
-import Name from "../components/heroDetails/Name";
-import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart";
-import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart";
-import Work from "../components/heroDetails/Work";
+import { fetchSuperheroDetails } from "../apis/api.js"; // Our API function
+import HeroDetailsLoader from "../components/DetailPageLoader.js";
+import ErrorMessage from "../components/ErrorMessage.js";
+import Header from "../components/Header.js";
+import Appearance from "../components/heroDetails/Appearance.jsx";
+import Biography from "../components/heroDetails/Biography.jsx";
+import ComicAndAlignment from "../components/heroDetails/ComicAndAlignment.jsx";
+import Connections from "../components/heroDetails/Connections.jsx";
+import CreatedAndUpdated from "../components/heroDetails/CreatedAndUpdated.jsx";
+import HeroImage from "../components/heroDetails/HeroImage.jsx";
+import Name from "../components/heroDetails/Name.jsx";
+import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart.jsx";
+import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart.jsx";
+import Work from "../components/heroDetails/Work.jsx";
 
 export default function SuperheroDetails() {
   let { heroId } = useParams(); // Get the hero ID from the URL parameters

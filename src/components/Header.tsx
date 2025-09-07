@@ -1,7 +1,7 @@
 import { Moon, Sun } from "lucide-react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ThemeContext } from "../context"; // Importing the ThemeContext for dark mode
+import { ThemeContext } from "../context/index.js"; // Importing the ThemeContext for dark mode
 
 // Header component for the application
 // It provides a link to the home page with a title

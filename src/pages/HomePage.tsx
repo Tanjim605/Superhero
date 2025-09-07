@@ -1,13 +1,13 @@
 import { ArrowDownAZ, ArrowDownZA } from "lucide-react"; // Importing the ArrowDownAZ icon
 import { useContext, useEffect, useState } from "react";
-import { fetchSuperheroesByApi } from "../apis/api"; // Our API function
-import ErrorMessage from "../components/ErrorMessage";
-import Header from "../components/Header";
-import HeroCard from "../components/HeroCard";
-import Loading from "../components/Loading";
-import Pagination from "../components/Pagination";
-import { ThemeContext } from "../context"; // Importing the ThemeContext
-import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl"; // Utility function to prepare the fetching URL
+import { fetchSuperheroesByApi } from "../apis/api.js"; // Our API function
+import ErrorMessage from "../components/ErrorMessage.js";
+import Header from "../components/Header.js";
+import HeroCard from "../components/HeroCard.js";
+import Loading from "../components/Loading.js";
+import Pagination from "../components/Pagination.js";
+import { ThemeContext } from "../context/index.js"; // Importing the ThemeContext
+import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl.js"; // Utility function to prepare the fetching URL
 
 export default function HomePage() {
   // State variables to manage superheroes data, loading state, error state, and pagination
@@ -113,7 +113,6 @@ export default function HomePage() {
             ))}
           </div>
 
-          
           <Pagination
             currentPage={page}
             totalPages={totalPages}

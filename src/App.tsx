@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ThemeContext } from "./context";
+import { ThemeContext } from "./context/index.js";
 import "./index.css";
 
-import ErrorPage from "./pages/ErrorPage";
-import HomePage from "./pages/HomePage";
-import SuperheroDetails from "./pages/SuperheroDetails";
+import ErrorPage from "./pages/ErrorPage.js";
+import HomePage from "./pages/HomePage.jsx";
+import SuperheroDetails from "./pages/SuperheroDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +24,10 @@ export default function App() {
   // Those states are used to manage the theme, pagination, and sorting
   // they are in the root so that they doesn't get reset on navigation
 
-
-  const [darkMode, setDarkMode] = useState(true); // Default to dark mode
-  const [perPage, setPerPage] = useState(5);  // Number of items per page
-  const [page, setPage] = useState(1); // Current page number
-  const [sortOrder, setSortOrder] = useState("asc"); // 'asc' or 'desc'
+  const [darkMode, setDarkMode] = useState<boolean>(true); // Default to dark mode
+  const [perPage, setPerPage] = useState<number>(5); // Number of items per page
+  const [page, setPage] = useState<number>(1); // Current page number
+  const [sortOrder, setSortOrder] = useState<string>("asc"); // 'asc' or 'desc'
 
   return (
     <ThemeContext.Provider
