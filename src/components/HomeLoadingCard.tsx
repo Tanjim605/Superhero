@@ -1,4 +1,6 @@
-export default function HomeLoadingCard() {
+import type { JSX } from "react";
+
+export default function HomeLoadingCard(): JSX.Element {
   return (
     <div className="relative w-[364px] flex flex-wrap bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-amber-400 hover:shadow-md transition-all duration-300 hover:scale-105">
       {/* Card Background and Image Placeholder */}

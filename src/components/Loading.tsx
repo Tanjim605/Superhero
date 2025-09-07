@@ -1,6 +1,7 @@
+import type { JSX } from "react";
 import HomeLoadingCard from "./HomeLoadingCard.js";
 
-export default function Loading() {
+export default function Loading(): JSX.Element {
   return (
     <>
       {/* <div className="flex justify-center items-center h-screen">
