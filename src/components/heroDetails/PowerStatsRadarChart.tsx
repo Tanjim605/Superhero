@@ -1,19 +1,16 @@
 // importing libraries for the radar chart from Chart.js and React-Chart.js-2
 import { Chart, registerables } from "chart.js";
-import { Radar } from "react-chartjs-2";
-Chart.register(...registerables);
 import { useContext } from "react";
-import { ThemeContext } from "../../context";
+import { Radar } from "react-chartjs-2";
+import { ThemeContext } from "../../context/index.js";
+Chart.register(...registerables);
 
 export default function PowerStatsRadarChart({ powerStats }) {
   // get dark mode from react context api
   const { darkMode } = useContext(ThemeContext);
-  
 
   const labels = Object.entries(powerStats).map(([key, value]) => key);
   const values = Object.entries(powerStats).map(([key, value]) => value);
-
-  
 
   const data = {
     labels: labels,
@@ -35,7 +32,7 @@ export default function PowerStatsRadarChart({ powerStats }) {
     plugins: {
       legend: {
         display: false,
-      }
+      },
     },
     scales: {
       r: {

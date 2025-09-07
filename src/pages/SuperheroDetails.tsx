@@ -1,32 +1,33 @@
 import { ChartBar, Hexagon } from "lucide-react"; // Importing the ChartBar icon
-import { useEffect, useState } from "react";
+import { useEffect, useState, type JSX } from "react";
 import { Link, useParams } from "react-router-dom";
 import { fetchSuperheroDetails } from "../apis/api.js"; // Our API function
 import HeroDetailsLoader from "../components/DetailPageLoader.js";
 import ErrorMessage from "../components/ErrorMessage.js";
 import Header from "../components/Header.js";
-import Appearance from "../components/heroDetails/Appearance.jsx";
-import Biography from "../components/heroDetails/Biography.jsx";
-import ComicAndAlignment from "../components/heroDetails/ComicAndAlignment.jsx";
-import Connections from "../components/heroDetails/Connections.jsx";
-import CreatedAndUpdated from "../components/heroDetails/CreatedAndUpdated.jsx";
-import HeroImage from "../components/heroDetails/HeroImage.jsx";
-import Name from "../components/heroDetails/Name.jsx";
-import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart.jsx";
-import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart.jsx";
-import Work from "../components/heroDetails/Work.jsx";
+import Appearance from "../components/heroDetails/Appearance.js";
+import Biography from "../components/heroDetails/Biography.js";
+import ComicAndAlignment from "../components/heroDetails/ComicAndAlignment.js";
+import Connections from "../components/heroDetails/Connections.js";
+import CreatedAndUpdated from "../components/heroDetails/CreatedAndUpdated.js";
+import HeroImage from "../components/heroDetails/HeroImage.js";
+import Name from "../components/heroDetails/Name.js";
+import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart.js";
+import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart.js";
+import Work from "../components/heroDetails/Work.js";
+import type { HeroProps } from "../types/hero.types.js";
 
-export default function SuperheroDetails() {
-  let { heroId } = useParams(); // Get the hero ID from the URL parameters
+export default function SuperheroDetails(): JSX.Element {
+  const { heroId } = useParams() as { heroId: string }; // Get the hero ID from the URL parameters
 
-  const [hero, setHero] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [chartType, setChartType] = useState("radar"); // State to toggle between bar and radar chart
+  const [hero, setHero] = useState<null | HeroProps>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [chartType, setChartType] = useState<string>("radar"); // State to toggle between bar and radar chart
 
   useEffect(() => {
     const loadDetails = async () => {
       try {
-        const data = await fetchSuperheroDetails(heroId); // Fetch by ID
+        const data: HeroProps = await fetchSuperheroDetails(heroId); // Fetch by ID
         setHero(data);
       } catch (error) {
         console.error("Error fetching details:", error);
@@ -72,17 +73,17 @@ export default function SuperheroDetails() {
           {/* Left Section: Image, Name and Appearance */}
           <div className="lg:w-1/2 bg-gray-200 dark:bg-slate-900 text-gray-900 dark:text-amber-50 p-6 flex flex-col items-center justify-start relative">
             {/* Main Hero Image */}
-            <HeroImage imageData={hero.image} altText={hero.name} />
+            <HeroImage imageData={hero?.image} altText={hero?.name} />
             {/* Name and Full Name */}
-            <Name name={hero.name} fullName={hero.biography["full-name"]} />
+            <Name name={hero?.name} fullName={hero?.biography["full-name"]} />
             {/* Appearance Section */}
-            <Appearance appearance={hero.appearance} />
+            <Appearance appearance={hero?.appearance} />
           </div>
 
           {/* Right Section: Details */}
           <div className="lg:w-1/2 p-6 bg-white text-gray-800 dark:bg-slate-800 dark:text-gray-300">
             {/* Comic and Alignment Badges */}
-            <ComicAndAlignment biography={hero.biography} />
+            <ComicAndAlignment biography={hero?.biography} />
 
             {/* Toggle Button for Chart Type */}
             <div className="mb-4">
@@ -106,22 +107,25 @@ export default function SuperheroDetails() {
             </div>
             {/* Power Stats Section based on chart type */}
             {chartType === "bar" ? (
-              <PowerStatsBarChart powerStats={hero.powerstats} />
+              <PowerStatsBarChart powerStats={hero?.powerstats} />
             ) : (
-              <PowerStatsRadarChart powerStats={hero.powerstats} />
+              <PowerStatsRadarChart powerStats={hero?.powerstats} />
             )}
 
             {/* Biography Section */}
-            <Biography biography={hero.biography} />
+            <Biography biography={hero?.biography} />
 
             {/* Work Section */}
-            <Work work={hero.work} />
+            <Work work={hero?.work} />
 
             {/* Connections Section */}
-            <Connections connections={hero.connections} />
+            <Connections connections={hero?.connections} />
 
             {/* Created/Updated Dates */}
-            <CreatedAndUpdated created={hero.created} updated={hero.updated} />
+            <CreatedAndUpdated
+              created={hero?.created}
+              updated={hero?.updated}
+            />
           </div>
         </div>
       </div>

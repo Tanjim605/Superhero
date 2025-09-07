@@ -1,7 +1,14 @@
-import { useRouteError, Link } from "react-router-dom";
+import type { JSX } from "react";
+import { Link, useRouteError } from "react-router-dom";
 
-export default function ErrorPage() {
-  const error = useRouteError();
+type ErrorPageType = {
+  statusText: string;
+  message: string;
+};
+
+export default function ErrorPage(): JSX.Element {
+  const error = useRouteError() as ErrorPageType;
+
   console.error(error); // Log the error for debugging
 
   return (

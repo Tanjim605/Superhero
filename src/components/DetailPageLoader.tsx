@@ -1,7 +1,8 @@
+import type { JSX } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header.js";
 
-export default function HeroDetailsLoader() {
+export default function HeroDetailsLoader(): JSX.Element {
   return (
     <div className="relative container mx-auto p-4">
       <Header />

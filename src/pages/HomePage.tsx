@@ -25,10 +25,10 @@ export default function HomePage() {
     const fetchSuperheroes = async () => {
       setLoading(true);
 
-      let baseUrl =
+      let baseUrl: string =
         "https://superhero-api.innovixmatrixsystem.com/api/collections/superheros/records";
 
-      const fetchingUrl = prepareAllFetchingUrl(
+      const fetchingUrl: string = prepareAllFetchingUrl(
         baseUrl,
         page,
         perPage,

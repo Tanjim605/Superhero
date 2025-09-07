@@ -1,7 +1,11 @@
+import type { JSX } from "react";
+
 type ErrorMessageProps = {
   children: React.ReactNode;
 };
 
-export default function ErrorMessage({ children }: ErrorMessageProps) {
+export default function ErrorMessage({
+  children,
+}: ErrorMessageProps): JSX.Element {
   return <div className="text-center text-red-500">{children}</div>;
 }
