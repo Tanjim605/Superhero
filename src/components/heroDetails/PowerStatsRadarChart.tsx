@@ -6,16 +6,20 @@ import { ThemeContext } from "../../context/index.js";
 import type { HeroProps } from "../../types/hero.types.js";
 Chart.register(...registerables);
 
+type ThemeContextProps = {
+  darkMode: boolean
+}
+
 export default function PowerStatsRadarChart({
   powerstats,
 }: HeroProps): JSX.Element {
   // get dark mode from react context api
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode } = useContext(ThemeContext) as ThemeContextProps;
 
-  const labels = Object.entries(powerstats).map(
+  const labels: string[] = powerstats && Object.entries(powerstats).map(
     ([key, value]: [string, number]):string => key
   );
-  const values = Object.entries(powerstats).map(
+  const values: number[] = powerstats && Object.entries(powerstats).map(
     ([key, value]: [string, number]):number => value
   );
 

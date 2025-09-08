@@ -10,8 +10,13 @@ import { ThemeContext } from "../context/index.js"; // Importing the ThemeContex
 import type { HeroProps } from "../types/hero.types.js";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl.js"; // Utility function to prepare the fetching URL
 
-type ErrorProps = {
-  message: string;
+type ContextProps = {
+  perPage: number;
+  setPerPage: React.Dispatch<React.SetStateAction<number>>;
+  sortOrder: string;
+  setSortOrder: React.Dispatch<React.SetStateAction<string>>;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export default function HomePage() {
@@ -24,7 +29,7 @@ export default function HomePage() {
 
   // Using ThemeContext to access the theme, pagination, and sorting states
   const { perPage, setPerPage, sortOrder, setSortOrder, page, setPage } =
-    useContext(ThemeContext);
+    useContext(ThemeContext) as ContextProps;
 
   useEffect(() => {
     const fetchSuperheroes = async () => {
@@ -90,7 +95,7 @@ export default function HomePage() {
           <label className="text-sm">Show:</label>
           <select
             value={perPage}
-            onChange={(e) => setPerPage(e.target.value)}
+            onChange={(e: Event) => setPerPage(e.target.value)}
             className="p-2 w-24 border rounded shadow-sm dark:bg-slate-800 dark:text-slate-300"
           >
             <option value={5}>5</option>

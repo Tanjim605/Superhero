@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeContext } from "./context/index.js";
 import "./style/index.css";
@@ -28,6 +28,8 @@ export default function App() {
   const [perPage, setPerPage] = useState<number>(5); // Number of items per page
   const [page, setPage] = useState<number>(1); // Current page number
   const [sortOrder, setSortOrder] = useState<string>("asc"); // 'asc' or 'desc'
+
+  // const {darkMode, setDarkMode} = useContext(ThemeContext)
 
   return (
     <ThemeContext.Provider

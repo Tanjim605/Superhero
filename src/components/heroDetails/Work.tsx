@@ -12,11 +12,11 @@ export default function Work({ work }: HeroProps): JSX.Element {
       </h2>
       <div className="space-y-2 text-sm mb-6">
         <p>
-          <strong>Occupation:</strong> {work.occupation}
+          <strong>Occupation:</strong> {work?.occupation}
         </p>
-        {work.base != "-" ? (
+        {work?.base != "-" ? (
           <p>
-            <strong>Base:</strong> {work.base}
+            <strong>Base:</strong> {work?.base}
           </p>
         ) : (
           ""
