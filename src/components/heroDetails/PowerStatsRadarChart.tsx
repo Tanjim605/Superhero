@@ -13,10 +13,10 @@ export default function PowerStatsRadarChart({
   const { darkMode } = useContext(ThemeContext);
 
   const labels = Object.entries(powerstats).map(
-    ([key, value]: [string, number]) => key
+    ([key, value]: [string, number]):string => key
   );
   const values = Object.entries(powerstats).map(
-    ([key, value]: [string, number]) => value
+    ([key, value]: [string, number]):number => value
   );
 
   const data = {

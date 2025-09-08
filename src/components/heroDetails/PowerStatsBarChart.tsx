@@ -1,6 +1,10 @@
 import type { JSX } from "react";
 import type { HeroProps } from "../../types/hero.types.js";
 
+type PowerStatsArrayType = {
+  [key: string]: number | null;
+};
+
 export default function PowerStatsBarChart({ powerstats }: HeroProps) {
   const colorClasses = [
     "bg-red-500",
@@ -10,13 +14,16 @@ export default function PowerStatsBarChart({ powerstats }: HeroProps) {
     "bg-orange-500",
     "bg-indigo-500",
   ];
+  const powerStatsArray = powerstats && Object.entries(powerstats);
+  console.log(powerStatsArray);
+
   return (
     <>
       <h2 className="text-2xl font-bold mb-4 border-b pb-2 text-gray-900 dark:text-amber-100">
         POWER STATS
       </h2>
       <div className="space-y-3 mb-6 h-48">
-        {Object.entries(powerstats).map(
+        {powerStatsArray?.map(
           (
             [key, value]: [string, number | "null"],
             index: number

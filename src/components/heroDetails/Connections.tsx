@@ -9,10 +9,10 @@ export default function Connections({ connections }: HeroProps): JSX.Element {
       </h2>
       <div className="space-y-2 text-sm mb-6">
         <p>
-          <strong>Group Affiliation:</strong> {connections["group-affiliation"]}
+          <strong>Group Affiliation:</strong> {connections?.["group-affiliation"]}
         </p>
         <p>
-          <strong>Relatives:</strong> {connections.relatives}
+          <strong>Relatives:</strong> {connections?.relatives}
         </p>
       </div>
     </>

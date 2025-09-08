@@ -1,6 +1,6 @@
 export type HeroProps = {
   id?: string;
-  imageUrl?: string;
+  image?:{url:string;}
   name?: string;
   appearance?: {
     gender: string;
