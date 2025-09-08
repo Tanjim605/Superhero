@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeContext } from "./context/index.js";
-import "./index.css";
+import "./style/index.css";
 
 import ErrorPage from "./pages/ErrorPage.js";
 import HomePage from "./pages/HomePage.jsx";

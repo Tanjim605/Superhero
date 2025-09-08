@@ -1,16 +1,23 @@
 // importing libraries for the radar chart from Chart.js and React-Chart.js-2
 import { Chart, registerables } from "chart.js";
-import { useContext } from "react";
+import { useContext, type JSX } from "react";
 import { Radar } from "react-chartjs-2";
 import { ThemeContext } from "../../context/index.js";
+import type { HeroProps } from "../../types/hero.types.js";
 Chart.register(...registerables);
 
-export default function PowerStatsRadarChart({ powerStats }) {
+export default function PowerStatsRadarChart({
+  powerstats,
+}: HeroProps): JSX.Element {
   // get dark mode from react context api
   const { darkMode } = useContext(ThemeContext);
 
-  const labels = Object.entries(powerStats).map(([key, value]) => key);
-  const values = Object.entries(powerStats).map(([key, value]) => value);
+  const labels = Object.entries(powerstats).map(
+    ([key, value]: [string, number]) => key
+  );
+  const values = Object.entries(powerstats).map(
+    ([key, value]: [string, number]) => value
+  );
 
   const data = {
     labels: labels,

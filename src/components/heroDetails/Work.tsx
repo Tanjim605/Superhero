@@ -1,4 +1,7 @@
-export default function Work({ work }) {
+import type { JSX } from "react";
+import type { HeroProps } from "../../types/hero.types.js";
+
+export default function Work({ work }: HeroProps): JSX.Element {
   // This component renders the Work section of the superhero details page.
   // It displays the occupation and base of the superhero.
   return (

@@ -1,10 +1,8 @@
 export type HeroProps = {
-  id: string;
-  image: {
-    url: string;
-  };
-  name: string;
-  appearance: {
+  id?: string;
+  imageUrl?: string;
+  name?: string;
+  appearance?: {
     gender: string;
     race: string;
     height: string[];
@@ -12,7 +10,7 @@ export type HeroProps = {
     "eye-color": string;
     "hair-color": string;
   };
-  biography: {
+  biography?: {
     "full-name": string;
     "alter-egos": string;
     aliases: string[];
@@ -21,7 +19,7 @@ export type HeroProps = {
     publisher: string;
     alignment: string;
   };
-  powerstats: {
+  powerstats?: {
     intelligence: number;
     strength: number;
     speed: number;
@@ -29,14 +27,14 @@ export type HeroProps = {
     power: number;
     combat: number;
   };
-  connections: {
+  connections?: {
     "group-affiliation": string;
     relatives: string;
   };
-  work: {
+  work?: {
     occupation: string;
     base: string;
   };
-  created: string;
-  updated: string;
+  created?: string;
+  updated?: string;
 };

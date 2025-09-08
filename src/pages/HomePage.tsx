@@ -1,5 +1,5 @@
 import { ArrowDownAZ, ArrowDownZA } from "lucide-react"; // Importing the ArrowDownAZ icon
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { fetchSuperheroesByApi } from "../apis/api.js"; // Our API function
 import ErrorMessage from "../components/ErrorMessage.js";
 import Header from "../components/Header.js";
@@ -7,15 +7,20 @@ import HeroCard from "../components/HeroCard.js";
 import Loading from "../components/Loading.js";
 import Pagination from "../components/Pagination.js";
 import { ThemeContext } from "../context/index.js"; // Importing the ThemeContext
+import type { HeroProps } from "../types/hero.types.js";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl.js"; // Utility function to prepare the fetching URL
+
+type ErrorProps = {
+  message: string;
+};
 
 export default function HomePage() {
   // State variables to manage superheroes data, loading state, error state, and pagination
-  const [superheroes, setSuperheroes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [totalPages, setTotalPages] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [superheroes, setSuperheroes] = useState<HeroProps[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<null | string>(null);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Using ThemeContext to access the theme, pagination, and sorting states
   const { perPage, setPerPage, sortOrder, setSortOrder, page, setPage } =
@@ -42,7 +47,11 @@ export default function HomePage() {
         setSuperheroes(data.items);
         setTotalPages(data.totalPages);
       } catch (err) {
-        setError(err.message);
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          console.log("Unknown Error type: ", err);
+        }
       } finally {
         setLoading(false);
       }
@@ -50,7 +59,7 @@ export default function HomePage() {
     fetchSuperheroes();
   }, [page, perPage, searchQuery, sortOrder]);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setPage(1); // Reset to first page on new search
   };
@@ -108,9 +117,17 @@ export default function HomePage() {
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
-            {superheroes.map((hero) => (
-              <HeroCard key={hero.id} hero={hero} />
-            ))}
+            {superheroes.map(
+              (hero) =>
+                hero.biography && (
+                  <HeroCard
+                    id={hero.id ?? ""}
+                    imageUrl={hero.imageUrl ?? ""}
+                    name={hero.name ?? ""}
+                    biography={hero.biography}
+                  />
+                )
+            )}
           </div>
 
           <Pagination

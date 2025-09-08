@@ -73,17 +73,48 @@ export default function SuperheroDetails(): JSX.Element {
           {/* Left Section: Image, Name and Appearance */}
           <div className="lg:w-1/2 bg-gray-200 dark:bg-slate-900 text-gray-900 dark:text-amber-50 p-6 flex flex-col items-center justify-start relative">
             {/* Main Hero Image */}
-            <HeroImage imageData={hero?.image} altText={hero?.name} />
+            <HeroImage
+              imageUrl={hero?.imageUrl ?? ""}
+              altText={hero?.name ?? ""}
+            />
+
             {/* Name and Full Name */}
-            <Name name={hero?.name} fullName={hero?.biography["full-name"]} />
+            <Name
+              name={hero?.name ?? ""}
+              fullName={hero?.biography?.["full-name"] ?? ""}
+            />
+
             {/* Appearance Section */}
-            <Appearance appearance={hero?.appearance} />
+            <Appearance
+              appearance={
+                hero?.appearance ?? {
+                  gender: "",
+                  race: "",
+                  height: [""],
+                  weight: [""],
+                  "eye-color": "",
+                  "hair-color": "",
+                }
+              }
+            />
           </div>
 
           {/* Right Section: Details */}
           <div className="lg:w-1/2 p-6 bg-white text-gray-800 dark:bg-slate-800 dark:text-gray-300">
             {/* Comic and Alignment Badges */}
-            <ComicAndAlignment biography={hero?.biography} />
+            <ComicAndAlignment
+              biography={
+                hero?.biography ?? {
+                  "full-name": "",
+                  "alter-egos": "",
+                  aliases: [""],
+                  "place-of-birth": "",
+                  "first-appearance": "",
+                  publisher: "",
+                  alignment: "",
+                }
+              }
+            />
 
             {/* Toggle Button for Chart Type */}
             <div className="mb-4">
@@ -107,24 +138,65 @@ export default function SuperheroDetails(): JSX.Element {
             </div>
             {/* Power Stats Section based on chart type */}
             {chartType === "bar" ? (
-              <PowerStatsBarChart powerStats={hero?.powerstats} />
+              <PowerStatsBarChart
+                powerstats={
+                  hero?.powerstats ?? {
+                    intelligence: 0,
+                    strength: 0,
+                    speed: 0,
+                    durability: 0,
+                    power: 0,
+                    combat: 0,
+                  }
+                }
+              />
             ) : (
-              <PowerStatsRadarChart powerStats={hero?.powerstats} />
+              <PowerStatsRadarChart
+                powerstats={
+                  hero?.powerstats ?? {
+                    intelligence: 0,
+                    strength: 0,
+                    speed: 0,
+                    durability: 0,
+                    power: 0,
+                    combat: 0,
+                  }
+                }
+              />
             )}
 
             {/* Biography Section */}
-            <Biography biography={hero?.biography} />
+            <Biography
+              biography={
+                hero?.biography ?? {
+                  "full-name": "",
+                  "alter-egos": "",
+                  aliases: [""],
+                  "place-of-birth": "",
+                  "first-appearance": "",
+                  publisher: "",
+                  alignment: "",
+                }
+              }
+            />
 
             {/* Work Section */}
-            <Work work={hero?.work} />
+            <Work work={hero?.work ?? { occupation: "", base: "" }} />
 
             {/* Connections Section */}
-            <Connections connections={hero?.connections} />
+            <Connections
+              connections={
+                hero?.connections ?? {
+                  "group-affiliation": "",
+                  relatives: "",
+                }
+              }
+            />
 
             {/* Created/Updated Dates */}
             <CreatedAndUpdated
-              created={hero?.created}
-              updated={hero?.updated}
+              created={hero?.created ?? ""}
+              updated={hero?.updated ?? ""}
             />
           </div>
         </div>

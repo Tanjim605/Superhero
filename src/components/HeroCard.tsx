@@ -5,9 +5,9 @@ import type { HeroProps } from "../types/hero.types.js";
 // HeroCard component to display individual superhero cards on the homepage
 export default function HeroCard({
   id,
-  image,
+  imageUrl,
   name,
-  biography,
+  biography
 }: HeroProps): JSX.Element {
   return (
     <Link to={`/details/${id}`}>
@@ -15,7 +15,7 @@ export default function HeroCard({
         {/* Card Background and Image */}
         <div className="relative w-full h-80 sm:h-96 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
           <img
-            src={image.url}
+            src={imageUrl}
             alt={name}
             className="w-full object-cover rounded"
           />
@@ -28,7 +28,8 @@ export default function HeroCard({
           <div className="flex justify-between items-center text-white w-full">
             <div className="flex flex-col">
               <span className="text tracking-wide">
-                {biography["publisher"]}
+                
+                {biography && biography["publisher"]}
               </span>
               <span className="text-2xl font-bold mt-1">{name}</span>
             </div>
