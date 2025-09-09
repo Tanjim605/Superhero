@@ -6,10 +6,10 @@ import { ThemeContext } from "../context/index.js"; // Importing the ThemeContex
 // Header component for the application
 // It provides a link to the home page with a title
 
-type ThemeContextProps = {
+interface ThemeContextProps {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-};
+}
 
 export default function Header() {
   const { darkMode, setDarkMode } = useContext(

@@ -1,7 +1,7 @@
 import type { JSX } from "react";
-import { Link, useRouteError } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-type CustomErrorType = {
+interface CustomErrorType {
   statusText: string;
   message: string;
 };

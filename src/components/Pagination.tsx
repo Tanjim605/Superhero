@@ -1,4 +1,4 @@
-type PaginationProps = {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   onPageChange: React.Dispatch<React.SetStateAction<number>>; //got this by hovering over setPage state on context

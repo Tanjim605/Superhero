@@ -1,13 +1,26 @@
 import type { HeroProps } from "../types/hero.types.js";
 
-type AllHeroProps = {
-  items: HeroProps[]; // heroProps er array nilam to, oitar por page er info gula
-} & {
+// previous situation:
+
+// type AllHeroProps2 = {
+//   items: HeroProps[]          // heroProps er array nilam to, oitar por page er info gula
+// } & {
+//   page: number;
+//   perPage: number;
+//   totalItems: number;
+//   totalPages: number;
+// }
+
+interface PageInfo {
   page: number;
   perPage: number;
   totalItems: number;
   totalPages: number;
-};
+}
+
+interface AllHeroProps extends PageInfo {
+  items: HeroProps[]; 
+}
 
 // return type shudu matro string use na kore Promise<string> use korar karon holo, .json() ekta Promise return kore
 export const fetchSuperheroDetails = async (id: string): Promise<HeroProps> => {
@@ -20,7 +33,7 @@ export const fetchSuperheroDetails = async (id: string): Promise<HeroProps> => {
   return response.json();
 };
 
-export const fetchSuperheroesByApi = async (
+export const fetchAllSuperheroes = async (
   url: string
 ): Promise<AllHeroProps> => {
   const response = await fetch(url);

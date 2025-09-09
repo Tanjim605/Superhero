@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import type { HeroProps } from "../../types/hero.types.js";
 
 export default function ComicAndAlignment({
-  biography
+  biography,
 }: HeroProps): JSX.Element {
   return (
     <div className="flex items-center space-x-2 mb-4">

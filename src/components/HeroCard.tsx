@@ -7,7 +7,7 @@ export default function HeroCard({
   id,
   image,
   name,
-  biography
+  biography,
 }: HeroProps): JSX.Element {
   return (
     <Link to={`/details/${id}`}>
@@ -28,7 +28,6 @@ export default function HeroCard({
           <div className="flex justify-between items-center text-white w-full">
             <div className="flex flex-col">
               <span className="text tracking-wide">
-                
                 {biography && biography["publisher"]}
               </span>
               <span className="text-2xl font-bold mt-1">{name}</span>

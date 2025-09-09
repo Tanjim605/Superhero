@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-type ErrorMessageProps = {
+interface ErrorMessageProps {
   children: React.ReactNode;
 };
 

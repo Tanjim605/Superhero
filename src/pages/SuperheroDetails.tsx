@@ -74,7 +74,7 @@ export default function SuperheroDetails(): JSX.Element {
           <div className="lg:w-1/2 bg-gray-200 dark:bg-slate-900 text-gray-900 dark:text-amber-50 p-6 flex flex-col items-center justify-start relative">
             {/* Main Hero Image */}
             <HeroImage
-              image={hero?.image ?? {url:""}}
+              image={hero?.image ?? { url: "" }}
               altText={hero?.name ?? ""}
             />
 

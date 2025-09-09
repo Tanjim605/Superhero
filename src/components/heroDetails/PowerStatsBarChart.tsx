@@ -1,9 +1,9 @@
 import type { JSX } from "react";
 import type { HeroProps } from "../../types/hero.types.js";
 
-type PowerStatsArrayType = {
+interface PowerStatsArrayType {
   [key: string]: number | null;
-};
+}
 
 export default function PowerStatsBarChart({ powerstats }: HeroProps) {
   const colorClasses = [

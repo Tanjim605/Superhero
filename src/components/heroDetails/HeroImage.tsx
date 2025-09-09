@@ -1,4 +1,4 @@
-type HeroImageProps = {
+interface HeroImageProps {
   image?: {url:string};
   altText?: string;
 };

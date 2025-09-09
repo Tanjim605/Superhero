@@ -1,6 +1,6 @@
 import { ArrowDownAZ, ArrowDownZA } from "lucide-react"; // Importing the ArrowDownAZ icon
 import { useContext, useEffect, useState, type ChangeEvent } from "react";
-import { fetchSuperheroesByApi } from "../apis/api.js"; // Our API function
+import { fetchAllSuperheroes } from "../apis/api.js"; // Our API function
 import ErrorMessage from "../components/ErrorMessage.js";
 import Header from "../components/Header.js";
 import HeroCard from "../components/HeroCard.js";
@@ -10,14 +10,14 @@ import { ThemeContext } from "../context/index.js"; // Importing the ThemeContex
 import type { HeroProps } from "../types/hero.types.js";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl.js"; // Utility function to prepare the fetching URL
 
-type ContextProps = {
+interface ContextProps {
   perPage: number;
   setPerPage: React.Dispatch<React.SetStateAction<number>>;
   sortOrder: string;
   setSortOrder: React.Dispatch<React.SetStateAction<string>>;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
 export default function HomePage() {
   // State variables to manage superheroes data, loading state, error state, and pagination
@@ -47,7 +47,7 @@ export default function HomePage() {
       );
 
       try {
-        const data = await fetchSuperheroesByApi(fetchingUrl);
+        const data = await fetchAllSuperheroes(fetchingUrl);
 
         setSuperheroes(data.items);
         setTotalPages(data.totalPages);
@@ -96,7 +96,9 @@ export default function HomePage() {
           <select
             value={perPage}
             // e.target.value string return kore oitake number e convert korte hoilo state type er shate milate
-            onChange={(e: ChangeEvent<HTMLSelectElement>) => setPerPage(Number(e.target.value))}
+            onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+              setPerPage(Number(e.target.value))
+            }
             className="p-2 w-24 border rounded shadow-sm dark:bg-slate-800 dark:text-slate-300"
           >
             <option value={5}>5</option>
