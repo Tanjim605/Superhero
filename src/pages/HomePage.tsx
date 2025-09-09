@@ -127,6 +127,7 @@ export default function HomePage() {
               (hero) =>
                 hero.biography && (
                   <HeroCard
+                    key={hero.id}
                     id={hero.id ?? ""}
                     image={hero.image ?? { url: "" }}
                     name={hero.name ?? ""}
