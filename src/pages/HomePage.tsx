@@ -95,7 +95,8 @@ export default function HomePage() {
           <label className="text-sm">Show:</label>
           <select
             value={perPage}
-            onChange={(e: Event) => setPerPage(e.target.value)}
+            // e.target.value string return kore oitake number e convert korte hoilo state type er shate milate
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => setPerPage(Number(e.target.value))}
             className="p-2 w-24 border rounded shadow-sm dark:bg-slate-800 dark:text-slate-300"
           >
             <option value={5}>5</option>

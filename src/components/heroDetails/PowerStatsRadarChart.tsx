@@ -16,10 +16,18 @@ export default function PowerStatsRadarChart({
   // get dark mode from react context api
   const { darkMode } = useContext(ThemeContext) as ThemeContextProps;
 
-  const labels: string[] = powerstats && Object.entries(powerstats).map(
+  const labels: string[] = (powerstats && Object.entries(powerstats).map(
+    ([key, value]: [string, number]):string => key
+  )) ?? [""];
+
+  const labels_with_nonNull: string[] =  Object.entries(powerstats!).map(
     ([key, value]: [string, number]):string => key
   );
-  const values: number[] = powerstats && Object.entries(powerstats).map(
+
+  // I figured there is a non-null operator that tells typeScript that the value is never null or undefined.
+  // So it removes the possibility of `could be undefined`
+  // Solution of the error: `Type 'undefined' is not assignable to type '{}'`
+  const values: number[] = Object.entries(powerstats!).map(
     ([key, value]: [string, number]):number => value
   );
 

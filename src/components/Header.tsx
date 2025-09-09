@@ -6,8 +6,15 @@ import { ThemeContext } from "../context/index.js"; // Importing the ThemeContex
 // Header component for the application
 // It provides a link to the home page with a title
 
+type ThemeContextProps = {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export default function Header() {
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { darkMode, setDarkMode } = useContext(
+    ThemeContext
+  ) as ThemeContextProps;
 
   // Toggle dark mode state
   // When darkMode is true, it shows the Moon icon, otherwise it shows the Sun icon
