@@ -7,7 +7,6 @@ import HeroCard from "../components/HeroCard.js";
 import Loading from "../components/Loading.js";
 import Pagination from "../components/Pagination.js";
 import { ThemeContext } from "../context/index.js"; // Importing the ThemeContext
-import type { HeroProps } from "../types/hero.types.js";
 import prepareAllFetchingUrl from "../utils/prepareAllFetchingUrl.js"; // Utility function to prepare the fetching URL
 
 interface ContextProps {
@@ -21,7 +20,7 @@ interface ContextProps {
 
 export default function HomePage() {
   // State variables to manage superheroes data, loading state, error state, and pagination
-  const [superheroes, setSuperheroes] = useState<HeroProps[]>([]);
+  const [superheroes, setSuperheroes] = useState<Hero[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<null | string>(null);
   const [totalPages, setTotalPages] = useState<number>(1);

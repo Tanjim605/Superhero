@@ -9,9 +9,8 @@ import {
 } from "lucide-react";
 
 import type { JSX } from "react";
-import type { HeroProps } from "../../types/hero.types.js";
 
-export default function Appearance({ appearance }: HeroProps): JSX.Element {
+export default function Appearance({ appearance }: Hero): JSX.Element {
   return (
     <div className="w-full bg-white dark:bg-slate-800 rounded-lg p-4 shadow-md border border-gray-200 dark:border-gray-700 text-nowrap">
       <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-amber-100 border-b pb-2">

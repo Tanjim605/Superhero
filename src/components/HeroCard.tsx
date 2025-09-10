@@ -1,6 +1,5 @@
 import type { JSX } from "react";
 import { Link } from "react-router-dom";
-import type { HeroProps } from "../types/hero.types.js";
 
 // HeroCard component to display individual superhero cards on the homepage
 export default function HeroCard({
@@ -8,7 +7,7 @@ export default function HeroCard({
   image,
   name,
   biography,
-}: HeroProps): JSX.Element {
+}: Hero): JSX.Element {
   return (
     <Link to={`/details/${id}`}>
       <div className="relative w-full flex bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-lime-300 hover:shadow-md transition-all duration-300 hover:scale-105">

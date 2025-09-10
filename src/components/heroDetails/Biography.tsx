@@ -1,7 +1,6 @@
 import type { JSX } from "react";
-import type { HeroProps } from "../../types/hero.types.js";
 
-export default function Biography({ biography }: HeroProps): JSX.Element {
+export default function Biography({ biography }: Hero): JSX.Element {
   return (
     <>
       {" "}

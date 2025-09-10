@@ -1,4 +1,4 @@
-export interface HeroProps {
+interface Hero {
   id?: string;
   image?:{url:string;}
   name?: string;

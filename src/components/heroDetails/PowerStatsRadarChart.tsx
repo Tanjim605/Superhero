@@ -3,7 +3,6 @@ import { Chart, registerables } from "chart.js";
 import { useContext, type JSX } from "react";
 import { Radar } from "react-chartjs-2";
 import { ThemeContext } from "../../context/index.js";
-import type { HeroProps } from "../../types/hero.types.js";
 Chart.register(...registerables);
 
 interface ThemeContextProps {
@@ -12,7 +11,7 @@ interface ThemeContextProps {
 
 export default function PowerStatsRadarChart({
   powerstats,
-}: HeroProps): JSX.Element {
+}: Hero): JSX.Element {
   // get dark mode from react context api
   const { darkMode } = useContext(ThemeContext) as ThemeContextProps;
 

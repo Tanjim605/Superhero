@@ -15,19 +15,18 @@ import Name from "../components/heroDetails/Name.js";
 import PowerStatsBarChart from "../components/heroDetails/PowerStatsBarChart.js";
 import PowerStatsRadarChart from "../components/heroDetails/PowerStatsRadarChart.js";
 import Work from "../components/heroDetails/Work.js";
-import type { HeroProps } from "../types/hero.types.js";
 
 export default function SuperheroDetails(): JSX.Element {
   const { heroId } = useParams() as { heroId: string }; // Get the hero ID from the URL parameters
 
-  const [hero, setHero] = useState<null | HeroProps>(null);
+  const [hero, setHero] = useState<null | Hero>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [chartType, setChartType] = useState<string>("radar"); // State to toggle between bar and radar chart
 
   useEffect(() => {
     const loadDetails = async () => {
       try {
-        const data: HeroProps = await fetchSuperheroDetails(heroId); // Fetch by ID
+        const data: Hero = await fetchSuperheroDetails(heroId); // Fetch by ID
         setHero(data);
       } catch (error) {
         console.error("Error fetching details:", error);

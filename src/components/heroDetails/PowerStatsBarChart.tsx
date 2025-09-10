@@ -1,11 +1,10 @@
 import type { JSX } from "react";
-import type { HeroProps } from "../../types/hero.types.js";
 
 interface PowerStatsArrayType {
   [key: string]: number | null;
 }
 
-export default function PowerStatsBarChart({ powerstats }: HeroProps) {
+export default function PowerStatsBarChart({ powerstats }: Hero) {
   const colorClasses = [
     "bg-red-500",
     "bg-blue-500",
