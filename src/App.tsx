@@ -28,6 +28,8 @@ export default function App() {
   const [perPage, setPerPage] = useState<number>(5); // Number of items per page
   const [page, setPage] = useState<number>(1); // Current page number
   const [sortOrder, setSortOrder] = useState<string>("asc"); // 'asc' or 'desc'
+  const [searchQuery, setSearchQuery] = useState<string>(""); // search query is pulled to root level to stay in back switch
+
 
   // const {darkMode, setDarkMode} = useContext(ThemeContext)
 
@@ -42,6 +44,8 @@ export default function App() {
         setSortOrder,
         page,
         setPage,
+        searchQuery,
+        setSearchQuery
       }}
     >
       <div

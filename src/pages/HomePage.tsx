@@ -16,6 +16,8 @@ interface ContextProps {
   setSortOrder: React.Dispatch<React.SetStateAction<string>>;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export default function HomePage() {
@@ -24,11 +26,18 @@ export default function HomePage() {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<null | string>(null);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [searchQuery, setSearchQuery] = useState<string>("");
 
   // Using ThemeContext to access the theme, pagination, and sorting states
-  const { perPage, setPerPage, sortOrder, setSortOrder, page, setPage } =
-    useContext(ThemeContext) as ContextProps;
+  const {
+    perPage,
+    setPerPage,
+    sortOrder,
+    setSortOrder,
+    page,
+    setPage,
+    searchQuery,
+    setSearchQuery,
+  } = useContext(ThemeContext) as ContextProps;
 
   useEffect(() => {
     const fetchSuperheroes = async () => {
