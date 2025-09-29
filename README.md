@@ -5,7 +5,7 @@ This project is a responsive frontend application built with React, Vite, and Ta
 Live link: [SuperHero Database](https://superhero-pearl.vercel.app/)
 
 ## Project Overview
-
+ 
 The Superhero Database allows users to explore a collection of superheroes with an intuitive and visually appealing interface.
 
 ## Features
